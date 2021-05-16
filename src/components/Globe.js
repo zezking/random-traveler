@@ -1,24 +1,11 @@
 import React from "react";
 import ReactGlobe from "react-globe";
-import {
-  AppBar,
-  Container,
-  Box,
-  Button,
-  Toolbar,
-  Typography,
-  CssBaseline,
-  makeStyles,
-} from "@material-ui/core";
+import { randomMarker } from "../helper/marker-generator";
 
-const Globe = () => {
+const Globe = ({ city }) => {
+  console.log(randomMarker(city));
   return (
-    <>
-      <CssBaseline />
-      <Container>
-        <ReactGlobe globeBackgroundTexture={null} />;
-      </Container>
-    </>
+    <ReactGlobe globeBackgroundTexture={null} height="50vh" width="50vw" />
   );
 };
 

@@ -1,15 +1,11 @@
-import React from "react";
-import {
-  AppBar,
-  Container,
-  Box,
-  Button,
-  Toolbar,
-  Typography,
-  CssBaseline,
-  makeStyles,
-} from "@material-ui/core";
-
+import AppBar from "@material-ui/core/AppBar";
+import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Toolbar from "@material-ui/core/Toolbar";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { makeStyles } from "@material-ui/core/styles";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
@@ -17,10 +13,16 @@ const useStyles = makeStyles({
     boxShadow: "none",
     color: "black",
   },
-  navBar: {},
-  Button: {
-    backgroundColor: "transparent",
+  appBar: {
+    color: "black",
+    background: "none",
     boxShadow: "none",
+  },
+  title: {
+    flexGrow: 1,
+  },
+  button: {
+    backgroundColor: "white",
     color: "black",
   },
 });
@@ -29,16 +31,12 @@ const Navigation = () => {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="relative">
+      <AppBar position="relative" className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6">Randvia</Typography>
-
-          <Button variant="contained" color="inherit">
-            Login
-          </Button>
-          <Button variant="contained" color="inherit">
-            Signup
-          </Button>
+          <ButtonGroup className={classes.button}>
+            <Button>Login</Button>
+            <Button>Signup</Button>
+          </ButtonGroup>
         </Toolbar>
       </AppBar>
     </div>
