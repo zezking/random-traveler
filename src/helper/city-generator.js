@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from "react";
-
 import cities from "cities.json";
 
 const randomCities = () => {
@@ -8,4 +6,18 @@ const randomCities = () => {
   }
 };
 
-export { randomCities };
+const randomMarker = (cityObj) => {
+  const markerId = markerIDgenerator();
+
+  return {
+    id: markerId,
+    city: cityObj.name,
+    coordinates: [cityObj.lat, cityObj.lng],
+  };
+};
+
+const markerIDgenerator = () => {
+  return Math.floor(Math.random() * 100);
+};
+
+export { randomCities, randomMarker };
