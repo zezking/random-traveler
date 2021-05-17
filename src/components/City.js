@@ -19,10 +19,15 @@ const useStyles = makeStyles({
     height: 140,
   },
 });
+
 const City = ({ city }) => {
   const [cityWiki, setCitiWiki] = useState("");
   useEffect(() => {
-    axios.get(`${extractURL}${city.name}`).then((data) => console.log(data));
+    axios
+      .get(
+        `https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_populated_places.geojson`
+      )
+      .then((data) => data.features);
   }, [city]);
   console.log(city);
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactGlobe from "react-globe";
-import { randomMarker } from "../helper/marker-generator";
+import { randomMarker } from "../helper/helper";
 
 const Globe = ({ city }) => {
   console.log(randomMarker(city));

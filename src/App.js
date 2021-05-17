@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "./components/Navigation";
-import { randomCities } from "./helper/city-generator";
+import { randomCities } from "./helper/helper";
 import City from "./components/City";
 import Globe from "./components/Globe.js";
 import { Button, Typography } from "@material-ui/core";
