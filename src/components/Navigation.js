@@ -6,9 +6,12 @@ import Toolbar from "@material-ui/core/Toolbar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Box from "@material-ui/core/Box";
+import Icon from "@material-ui/core/Icon";
+import PublicIcon from "@material-ui/icons/Public";
 const useStyles = makeStyles({
   root: {
-    flexGrow: 1,
+    width: "100%",
     backgroundColor: "transparent",
     boxShadow: "none",
     color: "black",
@@ -17,9 +20,6 @@ const useStyles = makeStyles({
     color: "black",
     background: "none",
     boxShadow: "none",
-  },
-  title: {
-    flexGrow: 1,
   },
   button: {
     backgroundColor: "white",
@@ -30,15 +30,14 @@ const Navigation = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="relative" className={classes.appBar}>
-        <Toolbar>
+      <Box display="flex" justifyContent="flex-end">
+        <Box>
           <ButtonGroup className={classes.button}>
             <Button>Login</Button>
             <Button>Signup</Button>
           </ButtonGroup>
-        </Toolbar>
-      </AppBar>
+        </Box>
+      </Box>
     </div>
   );
 };

@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "./components/Navigation";
-import { randomCities } from "./helper/helper";
+
 import City from "./components/City";
 import Globe from "./components/Globe.js";
-import { Button, Typography } from "@material-ui/core";
+import { Box, Button, Typography } from "@material-ui/core";
+import axios from "axios";
 
 function App() {
-  const [city, setCity] = useState({});
+  const [cities, setCities] = useState({});
   const [count, setCount] = useState(0);
-  const citiesData = randomCities();
+  const [cityWiki, setCitiWiki] = useState("");
   useEffect(() => {
-    setCity(citiesData);
+    axios
+      .get(
+        `https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_populated_places.geojson`
+      )
+      .then((data) => {
+        setCities([...data.data.features]);
+      });
   }, [count]);
+
   return (
     <div className="App">
       <Navigation />
@@ -20,10 +28,16 @@ function App() {
         variant="outlined"
         onClick={() => setCount(count + 1)}
       >
-        Give me somewhere I can't go!
+        Take me somewhere I can't go!
       </Button>
-      <City city={city} />
-      <Globe city={city} />
+      <Box
+        display="flex"
+        flexDirection="row-reverse"
+        justifyContent="space-between"
+      >
+        <City cities={cities} />
+        <Globe cities={cities} />
+      </Box>
     </div>
   );
 }

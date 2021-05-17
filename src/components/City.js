@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { randomCities } from "../helper/helper";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -20,19 +21,13 @@ const useStyles = makeStyles({
   },
 });
 
-const City = ({ city }) => {
-  const [cityWiki, setCitiWiki] = useState("");
-  useEffect(() => {
-    axios
-      .get(
-        `https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_populated_places.geojson`
-      )
-      .then((data) => data.features);
-  }, [city]);
-  console.log(city);
+const City = ({ cities }) => {
+  console.log(cities);
+  console.log(cities.length);
+
   return (
     <Card>
-      <h1>{city.name}</h1>
+      <h1>cities card</h1>
     </Card>
   );
 };

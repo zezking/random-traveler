@@ -1,9 +1,5 @@
-import cities from "cities.json";
-
-const randomCities = () => {
-  for (let i = 0; i <= 5; i++) {
-    return cities[Math.floor(Math.random() * cities.length)];
-  }
+const randomCities = (citiesData) => {
+  return citiesData[Math.floor(Math.random() * citiesData.length)];
 };
 
 const randomMarker = (cityObj) => {
