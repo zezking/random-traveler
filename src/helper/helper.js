@@ -1,4 +1,4 @@
-const randomCities = (citiesData) => {
+const randomCities = (citiesData, startIndex, endIndex) => {
   return citiesData[Math.floor(Math.random() * citiesData.length)];
 };
 

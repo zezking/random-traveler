@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { randomCities } from "../helper/helper";
 import Card from "@material-ui/core/Card";
+import Box from "@material-ui/core/Box";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -22,14 +22,13 @@ const useStyles = makeStyles({
 });
 
 const City = ({ cities }) => {
-  console.log(cities);
-  console.log(cities.length);
-
-  return (
-    <Card>
-      <h1>cities card</h1>
-    </Card>
-  );
+  return cities.map((city) => {
+    return (
+      <Card>
+        <h6>{city.properties.NAME}</h6>
+      </Card>
+    );
+  });
 };
 
 export default City;
