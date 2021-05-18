@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "./components/Navigation";
-
+import Card from "@material-ui/core/Card";
 import List from "@material-ui/core/List";
-import City from "./components/City";
+import CityList from "./components/CityList";
+import CityCard from "./components/CityCard";
 import Globe from "./components/Globe.js";
-import { Box, Button, makeStyles, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const [cities, setCities] = useState([]);
   const [count, setCount] = useState(0);
+  const [selectCity, setSelectCity] = useState(false);
 
   useEffect(() => {
     axios
@@ -32,14 +38,16 @@ function App() {
     <div className="App">
       <Navigation />
       <Box display="flex" alignItems="center" justifyContent="space-around">
-        <Box
-          display="flex"
-          flexDirection="row-reverse"
-          justifyContent="space-between"
-        >
-          <List className={classes.root}>
-            <City cities={cities} />
-          </List>
+        <Box display="flex" flexDirection="row-reverse" m={2}>
+          <Card>
+            <List className={classes.root}>
+              <CityList
+                cities={cities}
+                selectCity={selectCity}
+                setSelectCity={setSelectCity}
+              />
+            </List>
+          </Card>
         </Box>
         <Box
           display="flex"
@@ -55,6 +63,9 @@ function App() {
           >
             Take me somewhere I can't go!
           </Button>
+        </Box>
+        <Box>
+          <CityCard />
         </Box>
       </Box>
     </div>

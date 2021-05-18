@@ -4,7 +4,7 @@ import { randomMarker } from "../helper/helper";
 
 const Globe = ({ city }) => {
   return (
-    <ReactGlobe globeBackgroundTexture={null} height="50vh" width="50vw" />
+    <ReactGlobe globeBackgroundTexture={null} height="80vh" width="80vw" />
   );
 };
 

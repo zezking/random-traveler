@@ -2,13 +2,13 @@ const randomCities = (citiesData, startIndex, endIndex) => {
   return citiesData[Math.floor(Math.random() * citiesData.length)];
 };
 
-const randomMarker = (cityObj) => {
+const markerGenerator = (citiesData) => {
   const markerId = markerIDgenerator();
 
   return {
     id: markerId,
-    city: cityObj.name,
-    coordinates: [cityObj.lat, cityObj.lng],
+    city: citiesData.name,
+    coordinates: [citiesData.lat, citiesData.lng],
   };
 };
 
@@ -16,4 +16,4 @@ const markerIDgenerator = () => {
   return Math.floor(Math.random() * 100);
 };
 
-export { randomCities, randomMarker };
+export { randomCities, markerGenerator };

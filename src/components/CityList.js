@@ -21,14 +21,21 @@ const useStyles = makeStyles({
   },
 });
 
-const City = ({ cities }) => {
+const CityList = ({ cities, selectCity, setSelectCity }) => {
+  const handleClickOutside = (e) => {};
+  console.log(selectCity);
   return cities.map((city) => {
     return (
-      <Card>
+      <Button
+        size="large"
+        fullWidth={true}
+        p={2}
+        onClick={() => setSelectCity(true)}
+      >
         <h6>{city.properties.NAME}</h6>
-      </Card>
+      </Button>
     );
   });
 };
 
-export default City;
+export default CityList;
