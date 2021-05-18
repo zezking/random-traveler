@@ -1,6 +1,5 @@
 import React from "react";
 import ReactGlobe from "react-globe";
-import { randomMarker } from "../helper/helper";
 
 const Globe = ({ city }) => {
   return (

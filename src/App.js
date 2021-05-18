@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const [cities, setCities] = useState([]);
   const [count, setCount] = useState(0);
-  const [selectCity, setSelectCity] = useState(false);
+  const [CityDetails, setCityDetails] = useState(false);
+  const [city, setCity] = useState({});
 
   useEffect(() => {
     axios
@@ -43,8 +44,8 @@ function App() {
             <List className={classes.root}>
               <CityList
                 cities={cities}
-                selectCity={selectCity}
-                setSelectCity={setSelectCity}
+                setCityDetails={setCityDetails}
+                setCity={setCity}
               />
             </List>
           </Card>
@@ -65,7 +66,9 @@ function App() {
           </Button>
         </Box>
         <Box>
-          <CityCard />
+          {CityDetails && (
+            <CityCard setCityDetails={setCityDetails} setCity={setCity} />
+          )}
         </Box>
       </Box>
     </div>

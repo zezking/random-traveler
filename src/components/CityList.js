@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+
 import Card from "@material-ui/core/Card";
 import Box from "@material-ui/core/Box";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -21,20 +22,25 @@ const useStyles = makeStyles({
   },
 });
 
-const CityList = ({ cities, selectCity, setSelectCity }) => {
-  const handleClickOutside = (e) => {};
-  console.log(selectCity);
+const CityList = ({ cities, setCityDetails, setCity }) => {
+  const handleClick = (cityObj) => {
+    setCityDetails(true);
+  };
+
   return cities.map((city) => {
-    return (
-      <Button
-        size="large"
-        fullWidth={true}
-        p={2}
-        onClick={() => setSelectCity(true)}
-      >
-        <h6>{city.properties.NAME}</h6>
-      </Button>
-    );
+    if (city.properties.GEONAMEID !== -1) {
+      return (
+        <Button
+          key={city.properties.GEONAMEID}
+          size="large"
+          fullWidth={true}
+          p={2}
+          onClick={handleClick}
+        >
+          <h6>{city.properties.NAME}</h6>
+        </Button>
+      );
+    }
   });
 };
 

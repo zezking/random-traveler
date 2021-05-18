@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Card from "@material-ui/core/Card";
+import CloseIcon from "@material-ui/icons/Close";
+import Button from "@material-ui/core/Button";
 
-const CityCard = ({ city, marker }) => {
+const CityCard = ({ city, marker, setCityDetails, setCity }) => {
   return (
     <Card>
-      <h1>city</h1>
+      <Button onClick={() => setCityDetails(false)}>
+        <CloseIcon />
+      </Button>
+      <h1>{city.name}</h1>
     </Card>
   );
 };
