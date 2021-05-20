@@ -67,7 +67,11 @@ function App() {
         </Box>
         <Box>
           {CityDetails && (
-            <CityCard setCityDetails={setCityDetails} setCity={setCity} />
+            <CityCard
+              setCityDetails={setCityDetails}
+              setCity={setCity}
+              cities={cities}
+            />
           )}
         </Box>
       </Box>
