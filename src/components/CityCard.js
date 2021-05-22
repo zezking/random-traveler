@@ -6,7 +6,6 @@ import { Typography } from "@material-ui/core";
 
 const CityCard = ({ city, marker, setCityDetails, setCity }) => {
   const { NAME } = city.properties;
-  console.log(NAME);
   return (
     <Card>
       <Button onClick={() => setCityDetails(false)}>
@@ -14,7 +13,7 @@ const CityCard = ({ city, marker, setCityDetails, setCity }) => {
       </Button>
 
       <Typography variant="h1">
-        {NAME ? NAME : "Please Select a city"}
+        {city ? NAME : "Please Select a city"}
       </Typography>
     </Card>
   );

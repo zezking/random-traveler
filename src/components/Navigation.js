@@ -9,6 +9,8 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Box from "@material-ui/core/Box";
 import Icon from "@material-ui/core/Icon";
 import PublicIcon from "@material-ui/icons/Public";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 const useStyles = makeStyles({
   root: {
     width: "100%",
@@ -26,11 +28,21 @@ const useStyles = makeStyles({
     color: "black",
   },
 });
-const Navigation = () => {
+const Navigation = ({ cities }) => {
+  console.log(cities);
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Box display="flex" justifyContent="flex-end">
+      <Box display="flex" justifyContent="space-between">
+        <Autocomplete
+          id="Search"
+          options={cities}
+          getOptionLabel={(city) => city.properties.NAME}
+          style={{ width: 300 }}
+          renderInput={(params) => (
+            <TextField {...params} label="Search city" variant="outlined" />
+          )}
+        />
         <Box>
           <ButtonGroup className={classes.button}>
             <Button>Login</Button>

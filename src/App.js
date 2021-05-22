@@ -42,7 +42,7 @@ function App() {
   const classes = useStyles();
   return (
     <>
-      <Navigation />
+      <Navigation cities={[...cities]} />
       <Grid
         container
         alignContent="center"
@@ -72,14 +72,18 @@ function App() {
             Take me somewhere I can't go!
           </Button>
         </Grid>
-        <Grid item md={5}>
-          {CityDetails && (
+        <Grid container item md={5} alignContent="center">
+          {CityDetails ? (
             <CityCard
+              CityDetails={CityDetails}
               city={city}
               setCityDetails={setCityDetails}
               setCity={setCity}
               cities={cities}
+              placeholder={"Please Select a City"}
             />
+          ) : (
+            <Typography variant="h3">Please Select a city</Typography>
           )}
         </Grid>
       </Grid>
