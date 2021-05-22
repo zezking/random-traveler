@@ -7,7 +7,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Box from "@material-ui/core/Box";
-import Icon from "@material-ui/core/Icon";
 import PublicIcon from "@material-ui/icons/Public";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -34,6 +33,7 @@ const Navigation = ({ cities }) => {
   return (
     <div className={classes.root}>
       <Box display="flex" justifyContent="space-between">
+        <PublicIcon fontSize="large" />
         <Autocomplete
           id="Search"
           options={cities}

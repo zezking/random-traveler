@@ -18,9 +18,13 @@ const useStyles = makeStyles((theme) => ({
     overflow: "auto",
     maxHeight: 500,
   },
-
   grid: {
     height: "100vh",
+  },
+
+  mainButton: {
+    maxWidth: "200px",
+    margin: "0 auto",
   },
 }));
 function App() {
@@ -49,7 +53,8 @@ function App() {
         heigth="100%"
         className={classes.grid}
         justify="center"
-        spacing={6}
+        ml={8}
+        spacing={10}
       >
         <Grid item md={2}>
           <Card>
@@ -62,17 +67,25 @@ function App() {
             </List>
           </Card>
         </Grid>
-        <Grid container item md={5} alignContent="center" justify="center">
+        <Grid
+          container
+          item
+          md={8}
+          alignContent="center"
+          justify="center"
+          direction="column"
+        >
           <Globe cities={cities} />
           <Button
             color="primary"
             variant="outlined"
             onClick={() => setCount(count + 1)}
+            className={classes.mainButton}
           >
-            Take me somewhere I can't go!
+            Pick a random city
           </Button>
         </Grid>
-        <Grid container item md={5} alignContent="center">
+        <Grid container item md={2} alignContent="center">
           {CityDetails ? (
             <CityCard
               CityDetails={CityDetails}
@@ -83,7 +96,9 @@ function App() {
               placeholder={"Please Select a City"}
             />
           ) : (
-            <Typography variant="h3">Please Select a city</Typography>
+            <Card>
+              <Typography variant="h3">Please Select a city</Typography>
+            </Card>
           )}
         </Grid>
       </Grid>
