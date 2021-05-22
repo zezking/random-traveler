@@ -3,7 +3,7 @@ import ReactGlobe from "react-globe";
 
 const Globe = ({ city }) => {
   return (
-    <ReactGlobe globeBackgroundTexture={null} height="80vh" width="80vw" />
+    <ReactGlobe globeBackgroundTexture={null} height="30vh" width="30vw" />
   );
 };
 

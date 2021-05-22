@@ -4,6 +4,7 @@ import Card from "@material-ui/core/Card";
 import List from "@material-ui/core/List";
 import CityList from "./components/CityList";
 import CityCard from "./components/CityCard";
+import Grid from "@material-ui/core/Grid";
 import Globe from "./components/Globe.js";
 import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
@@ -16,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     overflow: "auto",
     maxHeight: 500,
+  },
+
+  grid: {
+    height: "100vh",
   },
 }));
 function App() {
@@ -36,10 +41,17 @@ function App() {
 
   const classes = useStyles();
   return (
-    <div className="App">
+    <>
       <Navigation />
-      <Box display="flex" alignItems="center" justifyContent="space-around">
-        <Box display="flex" flexDirection="row-reverse" m={2}>
+      <Grid
+        container
+        alignContent="center"
+        heigth="100%"
+        className={classes.grid}
+        justify="center"
+        spacing={6}
+      >
+        <Grid item md={2}>
           <Card>
             <List className={classes.root}>
               <CityList
@@ -49,13 +61,8 @@ function App() {
               />
             </List>
           </Card>
-        </Box>
-        <Box
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="space-around"
-        >
+        </Grid>
+        <Grid container item md={5} alignContent="center" justify="center">
           <Globe cities={cities} />
           <Button
             color="primary"
@@ -64,18 +71,19 @@ function App() {
           >
             Take me somewhere I can't go!
           </Button>
-        </Box>
-        <Box>
+        </Grid>
+        <Grid item md={5}>
           {CityDetails && (
             <CityCard
+              city={city}
               setCityDetails={setCityDetails}
               setCity={setCity}
               cities={cities}
             />
           )}
-        </Box>
-      </Box>
-    </div>
+        </Grid>
+      </Grid>
+    </>
   );
 }
 
