@@ -10,6 +10,4 @@ const theme = createMuiTheme({
   Card: {},
 });
 
-const signUpTheme = createMuiTheme({});
-
 export default theme;
