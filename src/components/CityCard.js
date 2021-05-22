@@ -4,7 +4,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import Button from "@material-ui/core/Button";
 
 const CityCard = ({ city, marker, setCityDetails, setCity }) => {
-  console.log(city);
+
   return (
     <Card>
       <Button onClick={() => setCityDetails(false)}>

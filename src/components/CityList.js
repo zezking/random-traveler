@@ -25,6 +25,7 @@ const useStyles = makeStyles({
 const CityList = ({ cities, setCityDetails, setCity }) => {
   const handleClick = (cityObj) => {
     setCityDetails(true);
+    setCity(cityObj);
   };
 
   return cities.map((city) => {
@@ -35,7 +36,7 @@ const CityList = ({ cities, setCityDetails, setCity }) => {
           size="large"
           fullWidth={true}
           p={2}
-          onClick={handleClick}
+          onClick={() => handleClick(city)}
         >
           <h6>{city.properties.NAME}</h6>
         </Button>
