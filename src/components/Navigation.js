@@ -28,7 +28,6 @@ const useStyles = makeStyles({
   },
 });
 const Navigation = ({ cities }) => {
-  console.log(cities);
   const classes = useStyles();
   return (
     <div className={classes.root}>

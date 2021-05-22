@@ -6,6 +6,8 @@ const theme = createMuiTheme({
       textTransform: "none",
     },
   },
+
+  Card: {},
 });
 
 const signUpTheme = createMuiTheme({});

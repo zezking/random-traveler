@@ -3,25 +3,22 @@ import Card from "@material-ui/core/Card";
 import CloseIcon from "@material-ui/icons/Close";
 import Button from "@material-ui/core/Button";
 import { Typography } from "@material-ui/core";
-import theme from "../theme/theme";
-import {
-  createMuiTheme,
-  makeStyles,
-  ThemeProvider,
-} from "@material-ui/core/styles";
+import { continentSlicer } from "../helper/helper";
+
 const CityCard = ({ city, marker, setCityDetails, setCity }) => {
-  const { NAME } = city.properties;
+  const { NAME: name, ADM0NAME: country, TIMEZONE: timezone } = city.properties;
+
+  const continent = continentSlicer(timezone);
+
   return (
-    <ThemeProvider theme={theme}>
-      <Card>
-        <Button onClick={() => setCityDetails(false)}>
-          <CloseIcon />
-        </Button>
-        <Typography variant="h1">
-          {city ? NAME : "Please Select a city"}
-        </Typography>
-      </Card>
-    </ThemeProvider>
+    <Card>
+      <Button onClick={() => setCityDetails(false)}>
+        <CloseIcon />
+      </Button>
+      <Typography variant="h1">{name}</Typography>
+      <Typography>{country}</Typography>
+      <Typography>{continent}</Typography>
+    </Card>
   );
 };
 

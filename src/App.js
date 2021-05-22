@@ -54,7 +54,6 @@ function App() {
         className={classes.grid}
         justify="center"
         ml={8}
-        spacing={10}
       >
         <Grid item md={2}>
           <Card>

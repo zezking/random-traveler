@@ -16,4 +16,16 @@ const markerIDgenerator = () => {
   return Math.floor(Math.random() * 100);
 };
 
-export { randomCities, markerGenerator };
+const continentSlicer = (str) => {
+  console.log(str);
+  let indexOfSlash = "";
+  [...str].forEach((c, index) => {
+    if (c === "/") {
+      indexOfSlash = index;
+    }
+  });
+
+  return str.slice(0, indexOfSlash);
+};
+
+export { randomCities, markerGenerator, continentSlicer };
