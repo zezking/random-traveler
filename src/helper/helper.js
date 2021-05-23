@@ -17,7 +17,6 @@ const markerIDgenerator = () => {
 };
 
 const continentSlicer = (str) => {
-  console.log(str);
   let indexOfSlash = "";
   [...str].forEach((c, index) => {
     if (c === "/") {

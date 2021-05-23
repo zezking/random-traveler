@@ -37,6 +37,10 @@ const useStyles = makeStyles((theme) => ({
   cityList: {
     width: 300,
   },
+  // gradientBackground: {
+  //   backgroundColor: "#0093E9",
+  //   backgroundImage: "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)",
+  // },
 }));
 function App() {
   const [cities, setCities] = useState([]);
@@ -56,7 +60,12 @@ function App() {
 
   const classes = useStyles();
   return (
-    <Grid container alignContent="center" justify="center">
+    <Grid
+      container
+      alignContent="center"
+      justify="center"
+      className={classes.gradientBackground}
+    >
       <Grid spacing={3} container justify="space-between" align="center">
         <Navigation cities={[...cities]} />
       </Grid>
