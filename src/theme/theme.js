@@ -7,7 +7,13 @@ const theme = createMuiTheme({
     },
   },
 
-  Card: {},
+  navigation: {
+    height: "20%",
+  },
+
+  main: {
+    height: "80%",
+  },
 });
 
 export default theme;

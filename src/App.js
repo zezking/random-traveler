@@ -12,19 +12,24 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import axios from "axios";
+import { Hidden } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     overflow: "auto",
     maxHeight: 500,
   },
-  grid: {
-    height: "100vh",
+  gridHeight: {
+    height: "80vh",
   },
 
   mainButton: {
     maxWidth: "200px",
     margin: "0 auto",
+  },
+
+  cityCard: {
+    Width: 400,
   },
 }));
 function App() {
@@ -45,35 +50,25 @@ function App() {
 
   const classes = useStyles();
   return (
-    <>
-      <Navigation cities={[...cities]} />
-      <Grid
-        container
-        alignContent="center"
-        heigth="100%"
-        className={classes.grid}
-        justify="center"
-        ml={8}
-      >
-        <Grid item md={2}>
-          <Card>
-            <List className={classes.root}>
-              <CityList
-                cities={cities}
-                setCityDetails={setCityDetails}
-                setCity={setCity}
-              />
-            </List>
-          </Card>
-        </Grid>
-        <Grid
-          container
-          item
-          md={8}
-          alignContent="center"
-          justify="center"
-          direction="column"
-        >
+    <Grid container alignContent="center" justify="center">
+      <Grid spacing={3} container justify="space-between" align="center">
+        <Navigation cities={[...cities]} />
+      </Grid>
+      <Grid container justify="center" align="center">
+        <Hidden smDown>
+          <Grid item xs={12} md={2}>
+            <Card>
+              <List className={classes.root}>
+                <CityList
+                  cities={cities}
+                  setCityDetails={setCityDetails}
+                  setCity={setCity}
+                />
+              </List>
+            </Card>
+          </Grid>
+        </Hidden>
+        <Grid container item xs={12} md={6} justify="center">
           <Globe cities={cities} />
           <Button
             color="primary"
@@ -84,7 +79,7 @@ function App() {
             Pick a random city
           </Button>
         </Grid>
-        <Grid container item md={2} alignContent="center">
+        <Grid container item alignContent="center" xs={12} md={4}>
           {CityDetails ? (
             <CityCard
               CityDetails={CityDetails}
@@ -96,12 +91,14 @@ function App() {
             />
           ) : (
             <Card>
-              <Typography variant="h3">Please Select a city</Typography>
+              <Typography variant="h6" noWrap="true" m={2}>
+                Please Select a city
+              </Typography>
             </Card>
           )}
         </Grid>
       </Grid>
-    </>
+    </Grid>
   );
 }
 

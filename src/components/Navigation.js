@@ -9,6 +9,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Box from "@material-ui/core/Box";
 import PublicIcon from "@material-ui/icons/Public";
 import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 const useStyles = makeStyles({
   root: {
@@ -30,9 +31,11 @@ const useStyles = makeStyles({
 const Navigation = ({ cities }) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <Box display="flex" justifyContent="space-between">
+    <>
+      <Grid item xs={12} sm={12} md={4}>
         <PublicIcon fontSize="large" />
+      </Grid>
+      <Grid item xs={12} sm={12} md={4}>
         <Autocomplete
           id="Search"
           options={cities}
@@ -42,14 +45,14 @@ const Navigation = ({ cities }) => {
             <TextField {...params} label="Search city" variant="outlined" />
           )}
         />
-        <Box>
-          <ButtonGroup className={classes.button}>
-            <Button>Login</Button>
-            <Button>Signup</Button>
-          </ButtonGroup>
-        </Box>
-      </Box>
-    </div>
+      </Grid>
+      <Grid item xs={12} sm={12} md={4}>
+        <ButtonGroup className={classes.button}>
+          <Button>Login</Button>
+          <Button>Signup</Button>
+        </ButtonGroup>
+      </Grid>
+    </>
   );
 };
 
