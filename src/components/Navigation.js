@@ -1,12 +1,8 @@
-import AppBar from "@material-ui/core/AppBar";
-import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Toolbar from "@material-ui/core/Toolbar";
-import CssBaseline from "@material-ui/core/CssBaseline";
+
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import Box from "@material-ui/core/Box";
+
 import PublicIcon from "@material-ui/icons/Public";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
@@ -35,7 +31,7 @@ const Navigation = ({ cities }) => {
       <Grid item xs={12} sm={12} md={4}>
         <PublicIcon fontSize="large" />
       </Grid>
-      <Grid item xs={12} sm={12} md={4}>
+      <Grid item xs={12} sm={6} md={4}>
         <Autocomplete
           id="Search"
           options={cities}
@@ -46,7 +42,7 @@ const Navigation = ({ cities }) => {
           )}
         />
       </Grid>
-      <Grid item xs={12} sm={12} md={4}>
+      <Grid item xs={12} sm={6} md={4}>
         <ButtonGroup className={classes.button}>
           <Button>Login</Button>
           <Button>Signup</Button>

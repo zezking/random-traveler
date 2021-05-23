@@ -8,9 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import Globe from "./components/Globe.js";
 import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import axios from "axios";
 import { Hidden } from "@material-ui/core";
 
@@ -24,12 +22,20 @@ const useStyles = makeStyles((theme) => ({
   },
 
   mainButton: {
-    maxWidth: "200px",
+    Width: "100px",
+    height: "50px",
     margin: "0 auto",
   },
 
+  mainContentMargin: {
+    marginTop: 100,
+  },
+
   cityCard: {
-    Width: 400,
+    width: 400,
+  },
+  cityList: {
+    width: 300,
   },
 }));
 function App() {
@@ -54,10 +60,14 @@ function App() {
       <Grid spacing={3} container justify="space-between" align="center">
         <Navigation cities={[...cities]} />
       </Grid>
-      <Grid container justify="center" align="center">
+      <Grid
+        container
+        justify="space-around"
+        className={classes.mainContentMargin}
+      >
         <Hidden smDown>
-          <Grid item xs={12} md={2}>
-            <Card>
+          <Grid container item xs={12} md={4} justify="center">
+            <Card className={classes.cityList}>
               <List className={classes.root}>
                 <CityList
                   cities={cities}
@@ -68,7 +78,14 @@ function App() {
             </Card>
           </Grid>
         </Hidden>
-        <Grid container item xs={12} md={6} justify="center">
+        <Grid
+          container
+          item
+          xs={12}
+          md={4}
+          alignItems="center"
+          justify="center"
+        >
           <Globe cities={cities} />
           <Button
             color="primary"
@@ -79,7 +96,14 @@ function App() {
             Pick a random city
           </Button>
         </Grid>
-        <Grid container item alignContent="center" xs={12} md={4}>
+        <Grid
+          container
+          item
+          justify="center"
+          alignContent="center"
+          xs={12}
+          md={4}
+        >
           {CityDetails ? (
             <CityCard
               CityDetails={CityDetails}
@@ -87,11 +111,10 @@ function App() {
               setCityDetails={setCityDetails}
               setCity={setCity}
               cities={cities}
-              placeholder={"Please Select a City"}
             />
           ) : (
             <Card>
-              <Typography variant="h6" noWrap="true" m={2}>
+              <Typography variant="h6" m={2}>
                 Please Select a city
               </Typography>
             </Card>

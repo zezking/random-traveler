@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Card from "@material-ui/core/Card";
 import CloseIcon from "@material-ui/icons/Close";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, Typography } from "@material-ui/core";
 import { continentSlicer } from "../helper/helper";
-import { use } from "@material-ui/styles";
 
 const useStyles = makeStyles({
   root: {
@@ -22,7 +21,7 @@ const CityCard = ({ city, marker, setCityDetails, setCity }) => {
   return (
     <Grid item>
       <Card className={classes.root}>
-        <Grid container>
+        <Grid container justify="flex-end">
           <Button onClick={() => setCityDetails(false)}>
             <CloseIcon />
           </Button>
