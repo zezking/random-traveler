@@ -37,10 +37,9 @@ const useStyles = makeStyles((theme) => ({
   cityList: {
     width: 300,
   },
-  // gradientBackground: {
-  //   backgroundColor: "#0093E9",
-  //   backgroundImage: "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)",
-  // },
+  cityDetailPlaceHolder: {
+    width: 400,
+  },
 }));
 function App() {
   const [cities, setCities] = useState([]);
@@ -95,7 +94,7 @@ function App() {
           alignItems="center"
           justify="center"
         >
-          <Globe cities={cities} />
+          <Globe cities={cities} city={city} />
           <Button
             color="primary"
             variant="outlined"
@@ -123,7 +122,12 @@ function App() {
             />
           ) : (
             <Card>
-              <Typography variant="h6" m={2}>
+              <Typography
+                className={classes.cityDetailPlaceHolder}
+                variant="h6"
+                m={2}
+                align="center"
+              >
                 Please Select a city
               </Typography>
             </Card>
