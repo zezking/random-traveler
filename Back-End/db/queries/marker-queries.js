@@ -1,10 +1,19 @@
 const db = require("../../lib/db.js");
 
-const getMarker = (markerID) => {};
+const getMarkers = (markerID) => {
+  const text = `
+	SELECT *
+	FROM markers;`;
+
+  return db
+    .query(text)
+    .then((res) => res.rows)
+    .catch((err) => console.log(`Error at users queries 'getMarkers'`, err));
+};
 const addMarker = (markerObj) => {
   const text = `
 	INSERT INTO markers (city_name, lat, lon)
-	VALUES ($1, $2, $3, $4)
+	VALUES ($1, $2, $3)
 	RETURNING *;`;
   const values = [markerObj.cityName, markerObj.lat, markerObj.long];
 
@@ -16,4 +25,5 @@ const addMarker = (markerObj) => {
 
 module.exports = {
   addMarker,
+  getMarkers,
 };
