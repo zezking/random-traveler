@@ -45,9 +45,8 @@ const markers = [
     value: 54,
   },
 ];
-const Globe = ({ city }) => {
-  console.log(city);
 
+const Globe = ({ city }) => {
   return (
     <ReactGlobe
       markers={markers}
