@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -38,9 +38,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+export default function Login({}) {
   const classes = useStyles();
   const [cookies, setCookie] = useCookies(["userID"]);
+  const [userDetails, setUserDetails] = useState({
+    email: "",
+    password: "",
+  });
+  const submitUser = (event, userDetails) => {
+    event.preventDefault();
+    axios.post(`/login`, { inputUser: userDetails }).then((res) => {
+      const userData = res.data;
+
+      console.log(res);
+
+      setCookie("userData", userData, { path: "/" });
+    });
+  };
+
+  const updateUser = (field, value) => {
+    setUserDetails((prev) => ({ ...prev, [field]: value }));
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -52,7 +71,11 @@ export default function Login() {
           <Typography component="h1" variant="h5">
             Login
           </Typography>
-          <form className={classes.form} noValidate>
+          <form
+            className={classes.form}
+            onSubmit={(event) => submitUser(event, userDetails)}
+            noValidate
+          >
             <TextField
               variant="outlined"
               margin="normal"
@@ -63,6 +86,7 @@ export default function Login() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(event) => updateUser("email", event.target.value)}
             />
             <TextField
               variant="outlined"
@@ -74,6 +98,7 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(event) => updateUser("password", event.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

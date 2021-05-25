@@ -5,8 +5,9 @@ import PublicIcon from "@material-ui/icons/Public";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { Typography } from "@material-ui/core";
 const useStyles = makeStyles({
   root: {
     width: "100%",
@@ -28,7 +29,36 @@ const useStyles = makeStyles({
     color: "white",
   },
 });
+
+const LogOut = ({ cookie, removeCookie }) => {
+  const { first_name, last_name } = cookie.userData;
+  return (
+    <>
+      <Typography> Welcome {`${first_name} ${last_name}`}</Typography>
+      <Button>
+        <Link onClick={() => removeCookie("userData")}>Logout</Link>
+      </Button>
+    </>
+  );
+};
+const Login = () => {
+  return (
+    <>
+      <Button>
+        <Link to="/">Home</Link>
+      </Button>
+      <Button>
+        <Link to="/login">Login</Link>
+      </Button>
+      <Button>
+        <Link to="/register">Register</Link>
+      </Button>
+    </>
+  );
+};
 const Navigation = ({ cities }) => {
+  const [cookie, setCookie, removeCookie] = useCookies(null);
+  console.log(cookie);
   const classes = useStyles();
   return (
     <>
@@ -48,15 +78,10 @@ const Navigation = ({ cities }) => {
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
         <ButtonGroup className={classes.button}>
-          <Button>
-            <Link to="/">Home</Link>
-          </Button>
-          <Button>
-            <Link to="/login">Login</Link>
-          </Button>
-          <Button>
-            <Link to="/register">Register</Link>
-          </Button>
+          {cookie.userData && (
+            <LogOut cookie={cookie} removeCookie={removeCookie} />
+          )}
+          {!cookie.userData && <Login />}
         </ButtonGroup>
       </Grid>
     </>
