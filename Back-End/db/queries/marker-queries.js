@@ -1,6 +1,6 @@
 const db = require("../../lib/db.js");
 
-const getMarkers = (markerID) => {
+const getMarkers = () => {
   const text = `
 	SELECT *
 	FROM markers;`;
@@ -10,6 +10,19 @@ const getMarkers = (markerID) => {
     .then((res) => res.rows)
     .catch((err) => console.log(`Error at users queries 'getMarkers'`, err));
 };
+const getUserMarkers = (userID) => {
+  const text = `
+	SELECT *
+	FROM markers WHERE user_id=$1;`;
+
+  const values = [userID];
+
+  return db
+    .query(text, values)
+    .then((res) => res.rows)
+    .catch((err) => console.log(`Error at users queries 'getMarkers'`, err));
+};
+
 const addMarker = (markerObj) => {
   const text = `
 	INSERT INTO markers (city_name, lat, lon)
@@ -26,4 +39,6 @@ const addMarker = (markerObj) => {
 module.exports = {
   addMarker,
   getMarkers,
+  getUserMarker,
+  getUserMarkers,
 };
