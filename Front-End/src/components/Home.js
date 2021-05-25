@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Navigation from "./components/Navigation";
+import Navigation from "./Navigation";
 import Card from "@material-ui/core/Card";
 import List from "@material-ui/core/List";
-import CityList from "./components/CityList";
-import CityCard from "./components/CityCard";
+import CityList from "./CityList";
+import CityCard from "./CityCard";
 import Grid from "@material-ui/core/Grid";
-import Globe from "./components/Globe.js";
+import Globe from "./Globe.js";
 import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     width: 400,
   },
 }));
-function App() {
+function Home() {
   const [cities, setCities] = useState([]);
   const [count, setCount] = useState(0);
   const [CityDetails, setCityDetails] = useState(false);
@@ -138,4 +138,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

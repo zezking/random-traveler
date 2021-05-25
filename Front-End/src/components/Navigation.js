@@ -5,6 +5,8 @@ import PublicIcon from "@material-ui/icons/Public";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 const useStyles = makeStyles({
   root: {
     width: "100%",
@@ -46,8 +48,15 @@ const Navigation = ({ cities }) => {
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
         <ButtonGroup className={classes.button}>
-          <Button>Login</Button>
-          <Button>Signup</Button>
+          <Button>
+            <Link to="/">Home</Link>
+          </Button>
+          <Button>
+            <Link to="/login">Login</Link>
+          </Button>
+          <Button>
+            <Link to="/register">Register</Link>
+          </Button>
         </ButtonGroup>
       </Grid>
     </>
