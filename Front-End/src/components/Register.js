@@ -10,6 +10,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 //routing
 import { Link } from "react-router-dom";
 
@@ -22,22 +23,24 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(3),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    marginTop: theme.spacing(3),
   },
   card: {
     marginTop: theme.spacing(6),
     padding: theme.spacing(3),
   },
-
   button: {
     backgroundColor: "white",
+  },
+  bottomText: {
+    marginTop: theme.spacing(6),
   },
 }));
 
@@ -104,17 +107,25 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
-            <Button
-              type="submit"
+            <ButtonGroup
               fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
+              orientation="vertical"
+              aria-label="outlined primary button group"
             >
-              Sign Up
-            </Button>
+              <Button type="submit" color="primary" className={classes.submit}>
+                Sign up
+              </Button>
+              <Button
+                color="primary"
+                className={classes.submit}
+                component={Link}
+                to={"/"}
+              >
+                Back
+              </Button>
+            </ButtonGroup>
             <Grid container justify="flex-end">
-              <Grid item>
+              <Grid item className={classes.bottomText}>
                 <Link to="/login">Already have an account? Sign in</Link>
               </Grid>
             </Grid>

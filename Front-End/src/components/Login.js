@@ -35,11 +35,14 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    marginTop: theme.spacing(3),
   },
   card: {
     marginTop: theme.spacing(6),
     padding: theme.spacing(3),
+  },
+  bottomText: {
+    marginTop: theme.spacing(6),
   },
 }));
 
@@ -108,17 +111,15 @@ export default function Login() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <ButtonGroup fullWidth orientation="vertical">
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
+            <ButtonGroup
+              fullWidth
+              orientation="vertical"
+              aria-label="outlined primary button group"
+            >
+              <Button type="submit" color="primary" className={classes.submit}>
                 Login
               </Button>
               <Button
-                variant="contained"
                 color="primary"
                 className={classes.submit}
                 component={Link}
@@ -128,7 +129,7 @@ export default function Login() {
               </Button>
             </ButtonGroup>
             <Grid container>
-              <Grid item>
+              <Grid item className={classes.bottomText}>
                 <Link to="/register">{"Don't have an account? Sign Up"}</Link>
               </Grid>
             </Grid>
