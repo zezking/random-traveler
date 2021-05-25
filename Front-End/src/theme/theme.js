@@ -4,6 +4,9 @@ export const theme = createMuiTheme({
   typography: {
     button: {
       textTransform: "none",
+
+      backgroundColor: "white",
+      color: "black",
     },
   },
 

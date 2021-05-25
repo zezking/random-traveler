@@ -66,7 +66,7 @@ function Home() {
       justify="center"
       className={classes.gradientBackground}
     >
-      <Grid spacing={3} container justify="space-between" align="center">
+      <Grid spacing={3} container justify="center" align="center">
         <Navigation cities={[...cities]} />
       </Grid>
       <Grid
