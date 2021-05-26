@@ -4,9 +4,9 @@ import Button from "@material-ui/core/Button";
 const baseURL = `https://en.wikipedia.org/w/api.php?action=opensearch&list=search&format=json&origin=*&search=`;
 const extractURL = `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&origin=*&exintro&explaintext&redirects=1&titles=`;
 
-const CityList = ({ cities, setCityDetails, setCity }) => {
+const CityList = ({ cities, setOpenCityCard, setCity }) => {
   const handleClick = (cityObj) => {
-    setCityDetails(true);
+    setOpenCityCard(true);
     setCity(cityObj);
   };
 

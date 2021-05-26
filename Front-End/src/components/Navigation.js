@@ -32,6 +32,12 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     color: "white",
   },
+  autocomplete: {
+    width: 300,
+    "& MuiInputBase-root": {
+      backgroundColor: "white",
+    },
+  },
 }));
 
 const LogOut = ({ cookie, removeCookie, classes }) => {
@@ -50,7 +56,7 @@ const LogOut = ({ cookie, removeCookie, classes }) => {
     </>
   );
 };
-const Login = ({ buttonStyles, classes }) => {
+const Login = ({ classes }) => {
   return (
     <ButtonGroup className={classes.button}>
       <Button component={Link} to={"/"}>
@@ -65,9 +71,8 @@ const Login = ({ buttonStyles, classes }) => {
     </ButtonGroup>
   );
 };
-const Navigation = ({ cities }) => {
+const Navigation = ({ cities, setCity, setOpenCityCard }) => {
   const [cookie, setCookie, removeCookie] = useCookies(null);
-  console.log(cookie);
   const classes = useStyles();
   return (
     <>
@@ -79,10 +84,14 @@ const Navigation = ({ cities }) => {
           id="Search"
           options={cities}
           getOptionLabel={(city) => city.properties.NAME}
-          style={{ width: 300 }}
+          className={classes.autocomplete}
           renderInput={(params) => (
             <TextField {...params} label="Search city" variant="outlined" />
           )}
+          onChange={(event, value) => {
+            setCity(value);
+            setOpenCityCard(true);
+          }}
         />
       </Grid>
       <Grid

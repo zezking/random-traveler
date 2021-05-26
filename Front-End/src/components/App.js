@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Register from "./Register";
 import Login from "./Login";
 import Home from "./Home";

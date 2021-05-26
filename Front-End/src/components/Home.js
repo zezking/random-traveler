@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     Width: "100px",
     height: "50px",
     margin: "0 auto",
+    background: "white",
   },
 
   mainContentMargin: {
@@ -44,9 +45,9 @@ const useStyles = makeStyles((theme) => ({
 function Home() {
   const [cities, setCities] = useState([]);
   const [count, setCount] = useState(0);
-  const [CityDetails, setCityDetails] = useState(false);
+  const [openCityCard, setOpenCityCard] = useState(false);
   const [city, setCity] = useState({});
-
+  console.log(city);
   useEffect(() => {
     axios
       .get(
@@ -67,7 +68,11 @@ function Home() {
       className={classes.gradientBackground}
     >
       <Grid spacing={3} container justify="center" align="center">
-        <Navigation cities={[...cities]} />
+        <Navigation
+          cities={[...cities]}
+          setCity={setCity}
+          setOpenCityCard={setOpenCityCard}
+        />
       </Grid>
       <Grid
         container
@@ -80,7 +85,7 @@ function Home() {
               <List className={classes.root}>
                 <CityList
                   cities={cities}
-                  setCityDetails={setCityDetails}
+                  setOpenCityCard={setOpenCityCard}
                   setCity={setCity}
                 />
               </List>
@@ -113,11 +118,11 @@ function Home() {
           xs={12}
           md={4}
         >
-          {CityDetails ? (
+          {openCityCard ? (
             <CityCard
-              CityDetails={CityDetails}
+              openCityCard={openCityCard}
               city={city}
-              setCityDetails={setCityDetails}
+              setOpenCityCard={setOpenCityCard}
               setCity={setCity}
               cities={cities}
             />
