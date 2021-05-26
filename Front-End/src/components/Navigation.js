@@ -32,12 +32,6 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     color: "white",
   },
-  autocomplete: {
-    width: 300,
-    "& MuiInputBase-root": {
-      backgroundColor: "white",
-    },
-  },
 }));
 
 const LogOut = ({ cookie, removeCookie, classes }) => {

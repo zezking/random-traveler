@@ -21,13 +21,6 @@ const useStyles = makeStyles((theme) => ({
     height: "80vh",
   },
 
-  mainButton: {
-    Width: "100px",
-    height: "50px",
-    margin: "0 auto",
-    background: "white",
-  },
-
   mainContentMargin: {
     marginTop: 100,
   },
@@ -100,15 +93,11 @@ function Home() {
           alignItems="center"
           justify="center"
         >
-          <Globe cities={cities} city={city} />
-          <Button
-            color="primary"
-            variant="outlined"
-            onClick={() => setCount(count + 1)}
-            className={classes.mainButton}
-          >
-            Pick a random city
-          </Button>
+          <Globe
+            cities={cities}
+            setCity={setCity}
+            setOpenCityCard={setOpenCityCard}
+          />
         </Grid>
         <Grid
           container

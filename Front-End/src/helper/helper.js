@@ -1,4 +1,4 @@
-const randomCities = (citiesData, startIndex, endIndex) => {
+const randomCity = (citiesData) => {
   return citiesData[Math.floor(Math.random() * citiesData.length)];
 };
 
@@ -33,4 +33,4 @@ const continentSlicer = (str) => {
   return str.slice(0, indexOfSlash);
 };
 
-export { randomCities, markerGenerator, continentSlicer };
+export { randomCity, markerGenerator, continentSlicer };
