@@ -57,6 +57,8 @@ const markers = [
   },
 ];
 
+// const markers=(userID)
+
 const Globe = ({ setCity, cities, setOpenCityCard }) => {
   const classes = useStyles();
   return (

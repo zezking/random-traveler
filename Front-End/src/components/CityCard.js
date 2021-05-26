@@ -14,7 +14,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CityCard = ({ city, marker, setOpenCityCard, setCity }) => {
-  const { NAME: name, ADM0NAME: country, TIMEZONE: timezone } = city.properties;
+  const {
+    NAME: name,
+    ADM0NAME: country,
+    TIMEZONE: timezone,
+    LATITUDE: lat,
+    LONGITUDE: lon,
+  } = city.properties;
   const classes = useStyles();
   const continent = continentSlicer(timezone);
 
@@ -28,7 +34,9 @@ const CityCard = ({ city, marker, setOpenCityCard, setCity }) => {
         </Grid>
         <Typography variant="h1">{name}</Typography>
         <Typography>Country: {country}</Typography>
-        <Typography>continent: {continent}</Typography>
+        <Typography>Continent: {continent}</Typography>
+        <Typography>Lat: {lat}</Typography>
+        <Typography>Lon: {lon}</Typography>
         <AddMarker />
       </Card>
     </Grid>
