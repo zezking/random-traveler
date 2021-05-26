@@ -9,7 +9,7 @@ import { continentSlicer } from "../helper/helper";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: 500,
-    padding: 12,
+    padding: theme.spacing(3),
   },
 }));
 

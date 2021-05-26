@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 //styles
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -12,8 +12,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 //routing
-import { Link } from "react-router-dom";
-
+import { Link, Redirect } from "react-router-dom";
+//cookies
+import { useCookies } from "react-cookie";
+import ReactGlobe from "react-globe";
+import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -46,10 +49,29 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const [cookies, setCookie] = useCookies();
+  const [userDetails, setUserDetails] = useState({
+    email: "",
+    password: "",
+  });
+  const updateUser = (field, value) => {
+    setUserDetails((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const submitUser = (event, userDetails) => {
+    axios.post("/users/", { inputUser: userDetails }).then((res) => {
+      event.preventDefault();
+      const userData = res.data;
+      setCookie("userData", userData, { path: "/" });
+      console.log(userData);
+    });
+    console.log(userDetails);
+  };
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+      {cookies.userData && <Redirect to="/" />}
       <Card className={classes.card}>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
@@ -58,7 +80,13 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Register
           </Typography>
-          <form className={classes.form} noValidate>
+          <form
+            className={classes.form}
+            noValidate
+            onSubmit={(event) => {
+              submitUser(event, userDetails);
+            }}
+          >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -70,6 +98,9 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={(event) =>
+                    updateUser("firstName", event.target.value)
+                  }
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -81,6 +112,9 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="lname"
+                  onChange={(event) =>
+                    updateUser("lastName", event.target.value)
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -92,6 +126,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={(event) => updateUser("email", event.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -104,6 +139,9 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  onChange={(event) =>
+                    updateUser("password", event.target.value)
+                  }
                 />
               </Grid>
             </Grid>
