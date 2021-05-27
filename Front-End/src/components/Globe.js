@@ -62,7 +62,7 @@ const markers = [
 ];
 
 const Globe = ({ setCity, cities, setOpenCityCard }) => {
-  const [cookie, setCookie, removeCookie] = useCookies(["userData"]);
+  const [cookie] = useCookies(["userData"]);
 
   const initiaMarker = [
     {
