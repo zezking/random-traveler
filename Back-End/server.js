@@ -40,7 +40,9 @@ const { checkUserByEmail } = require("./db/queries/user-queries");
 
 //routes
 const usersRouter = require("./routes/users.js");
+const markerRouter = require("./routes/markers.js");
 app.use("/users", usersRouter);
+app.use("/markers", markerRouter);
 app.post("/login", (req, res) => {
   const inputEmail = req.body.inputUser.email;
   const inputPassword = req.body.inputUser.password;

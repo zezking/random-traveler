@@ -39,6 +39,5 @@ const addMarker = (markerObj) => {
 module.exports = {
   addMarker,
   getMarkers,
-  getUserMarker,
   getUserMarkers,
 };
