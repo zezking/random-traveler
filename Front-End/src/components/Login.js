@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
   const classes = useStyles();
-  const [cookies, setCookie] = useCookies(null);
+  const [cookies, setCookie] = useCookies(["userData"]);
   const [userDetails, setUserDetails] = useState({
     email: "",
     password: "",

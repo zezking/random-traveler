@@ -1,8 +1,12 @@
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
-import React from "react";
 import ReactGlobe from "react-globe";
 import Button from "@material-ui/core/Button";
 import { randomCity } from "../helper/helper";
+import { useCookies } from "react-cookie";
+import { Redirect } from "react-router-dom";
+
+import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   mainButton: {
     Width: "100px",
@@ -57,10 +61,43 @@ const markers = [
   },
 ];
 
-// const markers=(userID)
-
 const Globe = ({ setCity, cities, setOpenCityCard }) => {
+  const [cookie, setCookie, removeCookie] = useCookies(["userData"]);
+
+  const initiaMarker = [
+    {
+      id: "0",
+      city: "Please Log In ",
+      color: "red",
+      coordinates: [1, 1],
+      value: 50,
+    },
+  ];
+
+  const [markers, setMarkers] = useState(initiaMarker);
+
   const classes = useStyles();
+  useEffect(() => {
+    console.log(initiaMarker);
+    if (cookie.userData) {
+      axios.get(`/markers/${cookie.userData.id}`).then((res) => {
+        const markersData = res.data.map((marker) => {
+          return {
+            id: marker.id,
+            city: marker.city_name,
+            color: "yellow",
+            coordinates: [marker.lat, marker.lon],
+            value: 50,
+          };
+        });
+        setMarkers(markersData);
+      });
+      return;
+    }
+
+    setMarkers(initiaMarker);
+  }, [cookie]);
+
   return (
     <>
       <ReactGlobe

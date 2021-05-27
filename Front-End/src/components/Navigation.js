@@ -66,7 +66,7 @@ const Login = ({ classes }) => {
   );
 };
 const Navigation = ({ cities, setCity, setOpenCityCard }) => {
-  const [cookie, setCookie, removeCookie] = useCookies(null);
+  const [cookie, setCookie, removeCookie] = useCookies(["userData"]);
   const classes = useStyles();
   return (
     <>

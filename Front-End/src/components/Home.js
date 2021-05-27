@@ -40,7 +40,7 @@ function Home() {
   const [count, setCount] = useState(0);
   const [openCityCard, setOpenCityCard] = useState(false);
   const [city, setCity] = useState({});
-  console.log(city);
+  const [cookie, setCookie] = useCookies(["userData"]);
   useEffect(() => {
     axios
       .get(

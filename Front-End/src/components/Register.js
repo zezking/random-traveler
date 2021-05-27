@@ -59,8 +59,8 @@ export default function SignUp() {
   };
 
   const submitUser = (event, userDetails) => {
+    event.preventDefault();
     axios.post("/users/", { inputUser: userDetails }).then((res) => {
-      event.preventDefault();
       const userData = res.data;
       setCookie("userData", userData, { path: "/" });
       console.log(userData);
