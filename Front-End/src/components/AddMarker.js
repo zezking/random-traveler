@@ -8,8 +8,6 @@ import { useCookies } from "react-cookie";
 const AddMarker = ({ city, addmarker, markers, setMarkers }) => {
   const [cookie, setCookie] = useCookies(["userData"]);
 
-  console.log(city);
-  console.log(cookie);
   const updateMakers = (event) => {
     event.preventDefault();
     if (cookie.userData) {
