@@ -52,6 +52,7 @@ function Home() {
   const [cookie, setCookie] = useCookies(["userData"]);
   const [markers, setMarkers] = useState(initiaMarker);
 
+  console.log(markers);
   useEffect(() => {
     if (cookie.userData) {
       axios.get(`/markers/${cookie.userData.id}`).then((res) => {
