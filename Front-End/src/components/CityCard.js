@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CityCard = ({ city, marker, setOpenCityCard, setCity }) => {
+const CityCard = ({ city, markers, setOpenCityCard, setCity, setMarkers }) => {
   const {
     NAME: name,
     ADM0NAME: country,
@@ -37,7 +37,7 @@ const CityCard = ({ city, marker, setOpenCityCard, setCity }) => {
         <Typography>Continent: {continent}</Typography>
         <Typography>Lat: {lat}</Typography>
         <Typography>Lon: {lon}</Typography>
-        <AddMarker />
+        <AddMarker markers={markers} setMarkers={setMarkers} city={city} />
       </Card>
     </Grid>
   );

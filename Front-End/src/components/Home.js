@@ -35,12 +35,42 @@ const useStyles = makeStyles((theme) => ({
     width: 400,
   },
 }));
+const initiaMarker = [
+  {
+    id: "0",
+    city: "Please Log In ",
+    color: "red",
+    coordinates: [1, 1],
+    value: 50,
+  },
+];
+
 function Home() {
   const [cities, setCities] = useState([]);
-  const [count, setCount] = useState(0);
   const [openCityCard, setOpenCityCard] = useState(false);
   const [city, setCity] = useState({});
   const [cookie, setCookie] = useCookies(["userData"]);
+  const [markers, setMarkers] = useState(initiaMarker);
+
+  useEffect(() => {
+    if (cookie.userData) {
+      axios.get(`/markers/${cookie.userData.id}`).then((res) => {
+        const markersData = res.data.map((marker) => {
+          return {
+            id: marker.id,
+            city: marker.city_name,
+            color: "yellow",
+            coordinates: [marker.lat, marker.lon],
+            value: 50,
+          };
+        });
+        setMarkers(markersData);
+      });
+      return;
+    }
+
+    setMarkers(initiaMarker);
+  }, [cookie]);
   useEffect(() => {
     axios
       .get(
@@ -49,7 +79,7 @@ function Home() {
       .then((result) => {
         setCities(result.data.features);
       });
-  }, [count]);
+  }, []);
 
   const classes = useStyles();
 
@@ -97,6 +127,7 @@ function Home() {
             cities={cities}
             setCity={setCity}
             setOpenCityCard={setOpenCityCard}
+            markers={markers}
           />
         </Grid>
         <Grid
@@ -114,6 +145,8 @@ function Home() {
               setOpenCityCard={setOpenCityCard}
               setCity={setCity}
               cities={cities}
+              setMarkers={setMarkers}
+              markers={markers}
             />
           ) : (
             <Card>

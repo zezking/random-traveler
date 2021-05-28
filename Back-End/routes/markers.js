@@ -19,5 +19,12 @@ router.get("/:userId", (req, res) => {
     .then((data) => res.json(data))
     .catch((err) => console.log("Error at markers Get route /userId"));
 });
+router.post("/", (req, res) => {
+  const userId = req.params.userId;
+
+  getUserMarkers(userId)
+    .then((data) => res.json(data))
+    .catch((err) => console.log("Error at markers Get route /userId"));
+});
 
 module.exports = router;
