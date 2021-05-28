@@ -37,7 +37,7 @@ app.use(methodOverride("_method"));
 
 // queries
 const { checkUserByEmail } = require("./db/queries/user-queries");
-
+console.log("it's here");
 //routes
 const usersRouter = require("./routes/users.js");
 const markerRouter = require("./routes/markers.js");

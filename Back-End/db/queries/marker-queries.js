@@ -1,5 +1,5 @@
 const db = require("../../lib/db.js");
-
+console.log("it's here");
 const getMarkers = () => {
   const text = `
 	SELECT *
@@ -24,11 +24,17 @@ const getUserMarkers = (userID) => {
 };
 
 const addMarker = (markerObj) => {
+  console.log(markerObj);
   const text = `
-	INSERT INTO markers (city_name, lat, lon)
-	VALUES ($1, $2, $3)
+	INSERT INTO markers (user_id, city_name, lat, lon)
+	VALUES ($1, $2, $3, $4)
 	RETURNING *;`;
-  const values = [markerObj.cityName, markerObj.lat, markerObj.long];
+  const values = [
+    markerObj.userId,
+    markerObj.cityName,
+    markerObj.lat,
+    markerObj.lon,
+  ];
 
   return db
     .query(text, values)
