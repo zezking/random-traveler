@@ -1,5 +1,7 @@
 const db = require("../../lib/db.js");
 
+import {db} from '../../lib/db'
+
 const getUsers = (userId) => {
   const text = `
 	SELECT *
