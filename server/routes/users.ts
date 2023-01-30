@@ -7,7 +7,7 @@ const {
   addUser,
 } = require("../db/queries/user-queries");
 
-router.get("/", (req, res) => {
+router.get("/", (req:Request, res:Response) => {
   getUsers()
     .then((data) => res.json(data))
     .catch((err) => console.log('Error at users GET route "/"', err));
