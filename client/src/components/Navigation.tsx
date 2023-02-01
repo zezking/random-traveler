@@ -8,6 +8,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { Typography } from "@material-ui/core";
+//contains a search input, two buttons, one login, one sign up
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",

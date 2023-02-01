@@ -15,7 +15,6 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { Link, Redirect } from "react-router-dom";
 //cookies
 import { useCookies } from "react-cookie";
-import ReactGlobe from "react-globe";
 import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -139,7 +138,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
-                  onChange={(event) =>
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     updateUser("password", event.target.value)
                   }
                 />
