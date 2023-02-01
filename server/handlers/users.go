@@ -15,7 +15,7 @@ func GetUsers(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"message": err.Error()})
 	}
 
-	return c.Status(200).JSON(result)
+	return c.Status(200).JSON(user)
 }
 
 func AddUser(c *fiber.Ctx) error {

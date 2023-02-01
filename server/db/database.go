@@ -38,6 +38,7 @@ func ConnectDb() {
 	db.Logger = logger.Default.LogMode(logger.Info)
 
 	log.Println("running migrations")
+	//Seed user data
 	db.AutoMigrate(&models.User{})
 
 	DB = Dbinstance{

@@ -3,8 +3,8 @@ version: '3.8'
 services:
   random-traveler-api:
     build: .
-    # env_file:
-    #   - .env
+    env_file:
+      - .env
     ports:
       - "3000:3000"
     volumes:
