@@ -1,5 +1,10 @@
 {
     "cSpell.words": [
-        "gofiber"
+        "Dbinstance",
+        "dbname",
+        "gofiber",
+        "gorm",
+        "sslmode",
+        "zezking"
     ]
 }

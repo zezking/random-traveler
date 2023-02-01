@@ -4,8 +4,8 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "module": "esnext",
-    "jsx": "react-jsx",
-    "target": "es5",
+    "jsx": "react",
+    "target": "es6",
     "allowJs": true,
     "lib": [
       "dom",
@@ -21,7 +21,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
   },
   "include": [
     "./src/"
