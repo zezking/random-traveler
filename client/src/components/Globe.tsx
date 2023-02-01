@@ -3,9 +3,7 @@ import { makeStyles } from "@material-ui/core";
 import ReactGlobe from "react-globe";
 import Button from "@material-ui/core/Button";
 import { randomCity } from "../helper/helper";
-import { useCookies } from "react-cookie";
 
-import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   mainButton: {
     Width: "100px",
