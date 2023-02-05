@@ -12,9 +12,13 @@ import {
   AutocompleteRenderInputParams,
   Button,
   ButtonGroup,
+  DialogTitle,
   Input,
   TextField,
 } from "@mui/material";
+import Modal from "./UI/Modal";
+import RegisterForm from "./UI/RegisterForm";
+import { City } from "../types";
 
 const initiaMarker = [
   {
@@ -26,14 +30,7 @@ const initiaMarker = [
   },
 ];
 
-export interface City {
-  properties: {
-    LONGITUDE: number;
-    LATITUDE: number;
-    POP_MAX: number;
-    NAME: string;
-  };
-}
+
 
 function Home() {
   const [cities, setCities] = useState<City[]>([
@@ -43,6 +40,8 @@ function Home() {
   const [city, setCity] = useState({});
   const [cookie, setCookie] = useCookies(["userData"]);
   const [markers, setMarkers] = useState(initiaMarker);
+
+  const [openRegisterForm, setOpenRegisterForm] = useState<boolean>(false);
 
   useEffect(() => {
     if (cookie.userData) {
@@ -78,159 +77,16 @@ function Home() {
   const w = window.innerWidth;
   const shiftFactor = 0.4;
   const shiftAmount = shiftFactor * w;
-  return (
-    // <Grid
-    //   container
-    //   alignContent="center"
-    //   justify="center"
-    //   className={classes.gradientBackground}
-    // >
-    //   <Grid spacing={3} container justify="center" align="center">
-    //     <Navigation
-    //       cities={[...cities]}
-    //       setCity={setCity}
-    //       setOpenCityCard={setOpenCityCard}
-    //     />
-    //   </Grid>
-    //   <Grid
-    //     container
-    //     justify="space-around"
-    //     className={classes.mainContentMargin}
-    //   >
-    //     <Hidden smDown>
-    //       <Grid container item xs={12} md={4} justify="center">
-    //         <Card className={classes.cityList}>
-    //           <List className={classes.root}>
-    //             <CityList
-    //               cities={cities}
-    //               setOpenCityCard={setOpenCityCard}
-    //               setCity={setCity}
-    //             />
-    //           </List>
-    //         </Card>
-    //       </Grid>
-    //     </Hidden>
-    //     <Grid
-    //       container
-    //       item
-    //       xs={12}
-    //       md={4}
-    //       alignItems="center"
-    //       justify="center"
-    //     >
-    //       <Globe
-    //         cities={cities}
-    //         setCity={setCity}
-    //         setOpenCityCard={setOpenCityCard}
-    //         markers={markers}
-    //       />
-    //     </Grid>
-    //     <Grid
-    //       container
-    //       item
-    //       justify="center"
-    //       alignContent="center"
-    //       xs={12}
-    //       md={4}
-    //     >
-    //       {openCityCard ? (
-    //         <CityCard
-    //           openCityCard={openCityCard}
-    //           city={city}
-    //           setOpenCityCard={setOpenCityCard}
-    //           setCity={setCity}
-    //           cities={cities}
-    //           setMarkers={setMarkers}
-    //           markers={markers}
-    //         />
-    //       ) : (
-    //         <Card>
-    //           <Typography
-    //             className={classes.cityDetailPlaceHolder}
-    //             variant="h6"
-    //             m={2} // <Grid
-    //   container
-    //   alignContent="center"
-    //   justify="center"
-    //   className={classes.gradientBackground}
-    // >
-    //   <Grid spacing={3} container justify="center" align="center">
-    //     <Navigation
-    //       cities={[...cities]}
-    //       setCity={setCity}
-    //       setOpenCityCard={setOpenCityCard}
-    //     />
-    //   </Grid>
-    //   <Grid
-    //     container
-    //     justify="space-around"
-    //     className={classes.mainContentMargin}
-    //   >
-    //     <Hidden smDown>
-    //       <Grid container item xs={12} md={4} justify="center">
-    //         <Card className={classes.cityList}>
-    //           <List className={classes.root}>
-    //             <CityList
-    //               cities={cities}
-    //               setOpenCityCard={setOpenCityCard}
-    //               setCity={setCity}
-    //             />
-    //           </List>
-    //         </Card>
-    //       </Grid>
-    //     </Hidden>
-    //     <Grid
-    //       container
-    //       item
-    //       xs={12}
-    //       md={4}
-    //       alignItems="center"
-    //       justify="center"
-    //     >
-    //       <Globe
-    //         cities={cities}
-    //         setCity={setCity}
-    //         setOpenCityCard={setOpenCityCard}
-    //         markers={markers}
-    //       />
-    //     </Grid>
-    //     <Grid
-    //       container
-    //       item
-    //       justify="center"
-    //       alignContent="center"
-    //       xs={12}
-    //       md={4}
-    //     >
-    //       {openCityCard ? (
-    //         <CityCard
-    //           openCityCard={openCityCard}
-    //           city={city}
-    //           setOpenCityCard={setOpenCityCard}
-    //           setCity={setCity}
-    //           cities={cities}
-    //           setMarkers={setMarkers}
-    //           markers={markers}
-    //         />
-    //       ) : (
-    //         <Card>
-    //           <Typography
-    //             className={classes.cityDetailPlaceHolder}
-    //             variant="h6"
-    //             m={2}
-    //             align="center"
-    //           >
-    //             Please Select a city
-    //           </Typography>
-    //         </Card>
-    //       )}
-    //     </Grid>
-    //   </Grid>
-    // </Grid>
-    //     </Grid>
-    //   </Grid>
-    // </Grid>
 
+  const openRegisterFormHandler = () => {
+    setOpenRegisterForm(true);
+  };
+
+  const closeRegisterFormHandler = () => {
+    setOpenRegisterForm(false);
+  };
+
+  return (
     <>
       <div style={{ position: "absolute", zIndex: 1000 }}>
         <Autocomplete
@@ -246,10 +102,16 @@ function Home() {
           }}
         />
         <ButtonGroup variant="contained">
-          <Button>Login</Button>
+          <Button onClick={openRegisterFormHandler}>Login</Button>
           <Button>Register</Button>
         </ButtonGroup>
       </div>
+
+      <RegisterForm
+        open={openRegisterForm}
+        onRegisterFormClose={closeRegisterFormHandler}
+      />
+
       <div
         style={{
           marginLeft: `-${shiftAmount}px`,
