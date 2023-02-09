@@ -17,7 +17,7 @@ import {
   TextField,
 } from "@mui/material";
 import Modal from "./UI/Modal";
-import RegisterForm from "./UI/RegisterForm";
+import RegisterForm from "../features/RegisterForm";
 import { City } from "../types";
 
 const initiaMarker = [

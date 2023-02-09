@@ -1,5 +1,5 @@
 import * as React from "react";
-import Modal from "./Modal";
+import Modal from "../components/UI/Modal";
 import {
   Avatar,
   Box,
@@ -10,7 +10,6 @@ import {
   TextField,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { bgcolor } from "@mui/system";
 
 const RegisterForm = (props: {
   open: boolean;
