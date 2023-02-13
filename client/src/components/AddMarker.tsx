@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
-
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 
 import { useCookies } from "react-cookie";
-
 const AddMarker = ({ city, addmarker, markers, setMarkers }) => {
   const [cookie, setCookie] = useCookies(["userData"]);
 

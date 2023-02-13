@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import AddMarker from "./AddMarker";
 import { makeStyles, Typography } from "@material-ui/core";
 import { continentSlicer } from "../helper/helper";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: 500,

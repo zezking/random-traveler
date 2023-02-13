@@ -1,5 +1,4 @@
 import React from "react";
-
 import AddMarker from "./AddMarker";
 import { makeStyles, Typography } from "@material-ui/core";
 import { continentSlicer } from "../helper/helper";

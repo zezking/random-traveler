@@ -1,9 +1,0 @@
-DROP TABLE IF EXISTS markers CASCADE;
-
-CREATE TABLE markers (
-    id SERIAL PRIMARY KEY NOT NULL,
-    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-    city_name VARCHAR(255) NOT NULL,
-    lat FLOAT(15) NOT NULL,
-    lon FLOAT(15) NOT NULL
-);

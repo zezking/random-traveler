@@ -30,8 +30,6 @@ const initiaMarker = [
   },
 ];
 
-
-
 function Home() {
   const [cities, setCities] = useState<City[]>([
     { properties: { LONGITUDE: 0, LATITUDE: 0, POP_MAX: 0, NAME: "" } },
@@ -102,8 +100,8 @@ function Home() {
           }}
         />
         <ButtonGroup variant="contained">
-          <Button onClick={openRegisterFormHandler}>Login</Button>
-          <Button>Register</Button>
+          <Button>Login</Button>
+          <Button onClick={openRegisterFormHandler}>Register</Button>
         </ButtonGroup>
       </div>
 
