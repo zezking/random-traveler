@@ -7,6 +7,7 @@ const Controls = (props: {
   cities: City[];
 }) => {
   const { onOpenRegisterForm, cities } = props;
+  c;
   return (
     <div style={{ position: "absolute", zIndex: 1000 }}>
       <Autocomplete
