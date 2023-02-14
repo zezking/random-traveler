@@ -2,7 +2,7 @@ import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 
 const Modal = (props: {
-  children: React.ReactElement[];
+  children: React.ReactElement[] | React.ReactElement;
   open: boolean;
   onModalClose: () => void;
 }) => {
@@ -10,7 +10,7 @@ const Modal = (props: {
 
   return (
     <div>
-      <Dialog maxWidth={'xs'} open={open} onClose={onModalClose}>
+      <Dialog maxWidth={"xs"} open={open} onClose={onModalClose}>
         {children}
       </Dialog>
     </div>

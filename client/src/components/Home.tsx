@@ -61,16 +61,10 @@ function Home() {
     setMarkers(initiaMarker);
   }, [cookie]);
   useEffect(() => {
-    axios
-      .get(
-        `https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_populated_places.geojson`
-      )
-      .then((result) => {
-        setCities(result.data.features);
-      });
+    axios.get(`${process.env.REACT_APP_CITY_DATA_URL}`).then((result) => {
+      setCities(result.data.features);
+    });
   }, []);
-
-  console.log(cities);
 
   const w = window.innerWidth;
   const shiftFactor = 0.4;
