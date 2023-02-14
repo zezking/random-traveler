@@ -19,8 +19,7 @@ const RegisterForm = (props: {
   const { onRegisterFormClose, open } = props;
   const [formError, setFormError] = useState<boolean>(false);
   const [validationMsg, setValidationMsg] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
+
   const submitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -29,10 +28,9 @@ const RegisterForm = (props: {
     if (valid) {
       try {
         const data = JSON.stringify(Object.fromEntries(formData));
-        console.log(data);
-        console.log("async called");
+        console.log(`${process.env.REACT_APP_API_BASE_URL}api/register`, data);
         await axios.post(
-          `${process.env.REACT_APP_API_BASE_URL}api/register`,
+          `${process.env.REACT_APP_API_BASE_URL}/register`,
           data
         );
       } catch (e) {
@@ -110,7 +108,6 @@ const RegisterForm = (props: {
             type="password"
             fullWidth
             variant="outlined"
-            onChange={(event) => setPassword(event.currentTarget.value)}
           />
           <TextField
             required
@@ -123,7 +120,6 @@ const RegisterForm = (props: {
             fullWidth
             variant="outlined"
             helperText={validationMsg}
-            onChange={(event) => setConfirmPassword(event.currentTarget.value)}
           />
           <DialogActions>
             <Button onClick={onRegisterFormClose}>Cancel</Button>
