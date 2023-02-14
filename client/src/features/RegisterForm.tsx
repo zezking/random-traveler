@@ -22,17 +22,17 @@ const RegisterForm = (props: {
 
   const submitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const valid = formValidation(formData);
+    const data = new FormData(event.currentTarget);
+    const valid = formValidation(data);
 
     if (valid) {
+      data.delete("confirmPassword");
       try {
-        const data = JSON.stringify(Object.fromEntries(formData));
-        console.log(`${process.env.REACT_APP_API_BASE_URL}api/register`, data);
-        await axios.post(
-          `${process.env.REACT_APP_API_BASE_URL}/register`,
+        const res = await axios.post(
+          `${process.env.REACT_APP_API_BASE_URL}/auth/register`,
           data
         );
+        console.log(res);
       } catch (e) {
         console.error(e);
       }
