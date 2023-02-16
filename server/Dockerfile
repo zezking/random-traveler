@@ -5,7 +5,7 @@ FROM php:8.0-apache
 USER root
 
 #Install system dependencies
-RUN apt-get update && apt-get instlal -y \
+RUN apt-get update && apt-get install -y \
 	nodejs \
 	npm \
 	curl \
@@ -27,7 +27,7 @@ RUN docker-php-ext-confgiure gd
 RUN docker-php-ext-install pdo_mysql mysql zip mbstring exif pcntl bcmath gd 
 RUN docker-php-source delete 
 
-COPY docker/vhost.conf /etc/apache2/sites-available/000-default.conf
+COPY ../server/docker/vhost.conf /etc/apache2/sites-available/000-default.conf
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN chown -R www-data:www-data /var/www/html && a2enmod rewrite

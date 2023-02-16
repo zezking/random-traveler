@@ -1,37 +1,36 @@
 version: "3.7"
 
 services:
-    app:
-        build:
-            context: .
-            dockerfile: .docker/Dockerfile
-        image: "shouts.dev/laravel"
-        container_name: shouts-laravel-app
-        ports:
-            - "8000:80"
-        volumes:
-            - ./:/var/www/html
-        networks:
-            - laravel-shouts
-        depends_on:
-            - mysql
-    mysql:
-        image: "mariadb:latest"
-        container_name: shouts-laravel-db
-        restart: unless-stopped
-        ports:
-            - "3306:3306"
-        environment:
-            MYSQL_DATABASE: ${DB_DATABASE}
-            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-            MYSQL_PASSWORD: ${DB_PASSWORD}
-            MYSQL_USER: ${DB_USERNAME}
-            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-        volumes:
-            - ./database/dbdata:/var/lib/mysql
-        networks:
-            - laravel-shouts
-
+  app:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    image: "random-traveler-api"
+    container_name: random-traveler-api
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - random-traveler
+    depends_on:
+      - mysql
+  mysql:
+    image: "mariadb:latest"
+    container_name: random-traveler-db
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - ./database/dbdata:/var/lib/mysql
+    networks:
+      - random-traveler
 networks:
-    laravel-shouts:
-        driver: bridge
+  random-traveler:
+    driver: bridge
