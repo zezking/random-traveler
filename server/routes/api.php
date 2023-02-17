@@ -22,11 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('tokens/create', function (Request $request){
-    $token = $request->createToken($request->token_name);
+    $token = $request->user()->createToken($request->token_name);
 
     return ['token' => $token->plainTextToken];
 });
 
 Route::post('/auth/register', [AuthController::class, 'createUser']);
-Route::post('/auth/login', [AuthController::class, 'loginUser']);
+Route::middleware('auth:sanctum')->post('/auth/login', [AuthController::class, 'loginUser']);
+Route::middleware('auth:sanctum')->post('/auth/expires_token', [AuthController::class, 'expiresUserToken']);
 

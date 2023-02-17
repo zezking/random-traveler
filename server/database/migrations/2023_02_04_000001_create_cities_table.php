@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('name');
             $table->float('longitude');
             $table->float('latitude');
-            $table->timestamps();
         });
     }
 
