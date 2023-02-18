@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Ramsey\Uuid\Uuid;
 
 class AuthController extends Controller
 {
@@ -36,6 +37,7 @@ class AuthController extends Controller
                         };
 
                         $user = User::create([
+                                'id'=>Uuid::uuid1(), 
                                 'name' => $request->name,
                                 'email' => $request->email,
                                 'password' => Hash::make($request->password)
@@ -47,7 +49,7 @@ class AuthController extends Controller
                                 'status' => true,
                                 'message' => 'User Created Successfully',
                                 'token' => $user->createToken('API_TOKEN', ['admin'], Carbon::now('UTC')->addMinute($tokenExpiration))->plainTextToken,
-                        ], 200);
+                        ], 201);
                 } catch (\Throwable $th) {
                         return response()->json([
                                 'status' => false,
