@@ -41,7 +41,7 @@ class UserApiTest extends TestCase
                 ]);
                 $tokenExpiration = config('sanctum.expiration');
                 $token = $user->createToken('API_TOKEN', ['admin'], Carbon::now('UTC')->addMinute($tokenExpiration))->plainTextToken;
-                $response = $this->withToken($token)->postJson('/api/auth/login', ['email' => $email, 'password' => $password]);
+                $response = $this->withToken($token)->post('/api/auth/login', ['email' => $email, 'password' => $password]);
                 $response->assertStatus(200)->assertJson(['status' => true]);
         }
 }
