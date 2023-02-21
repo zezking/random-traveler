@@ -60,9 +60,11 @@ jobs:
           mkdir -p database
           touch database/database.sqlite
       - name: Execute tests (Unit and Feature tests) via PHPUnit
-        run: ./vendor/bin/phpunit
         env:
           DB_HOST: 127.0.0.1
           DB_DATABASE: test_db
           DB_USERNAME: user
           DB_PASSWORD: password
+        run: |
+          php artisan migrate:refresh
+          ./vendor/bin/phpunit
