@@ -4,5 +4,7 @@ export interface City {
     LATITUDE: number;
     POP_MAX: number;
     NAME: string;
+    CONTINENT: string;
+    ADM0NAME: string;
   };
 }

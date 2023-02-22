@@ -1,9 +1,7 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-
+import { Button } from "@mui/material";
 const baseURL = `https://en.wikipedia.org/w/api.php?action=opensearch&list=search&format=json&origin=*&search=`;
 const extractURL = `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&origin=*&exintro&explaintext&redirects=1&titles=`;
-
 const CityList = ({ cities, setOpenCityCard, setCity }) => {
   const handleClick = (cityObj) => {
     setOpenCityCard(true);
@@ -17,7 +15,6 @@ const CityList = ({ cities, setOpenCityCard, setCity }) => {
           key={city.properties.GEONAMEID}
           size="large"
           fullWidth={true}
-          p={2}
           onClick={() => handleClick(city)}
         >
           {city.properties.NAME}
